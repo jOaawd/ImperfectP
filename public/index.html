@@ -1,23 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Chemical Example</title>
-		<script src="/chemical.js"></script>
-	</head>
-	<body>
-		<h1>Chemical Example</h1>
-		<input id="search" placeholder="Enter URL" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ImperfectP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
+        }
 
-		<script>
-			const search = document.getElementById("search");
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
 
-			search.addEventListener("keydown", async function (e) {
-				if (e.key == "Enter" && chemical.loaded && e.target.value) {
-					window.location = await chemical.encode(e.target.value);
-				}
-			});
-		</script>
-	</body>
+        input {
+            width: 80%;
+            max-width: 500px;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 40px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        input:focus {
+            animation: pulse 1.5s infinite;
+        }
+
+    </style>
+    <script src="/chemical.js"></script>
+</head>
+<body>
+    <h1>ImperfectP</h1>
+    <input id="search" placeholder="Enter URL" />
+
+    <script>
+        const search = document.getElementById("search");
+
+        search.addEventListener("keydown", async function (e) {
+            if (e.key == "Enter" && chemical.loaded && e.target.value) {
+                window.location = await chemical.encode(e.target.value);
+            }
+        });
+    </script>
+</body>
 </html>
